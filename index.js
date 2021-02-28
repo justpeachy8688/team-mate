@@ -26,6 +26,10 @@ const questions = () =>
         }
     ]);
 
-const generateHTML = (answers) => {
+questions().then((answers) => {
+    console.log(answers)
+})
 
-};
+// const generateHTML = (answers) => {
+
+// };
