@@ -1,4 +1,3 @@
-const { test, expect } = require("@jest/globals");
 const Engineer = require("../lib/Engineer");
 
 test('initiate Engineer', () => {
@@ -16,4 +15,14 @@ test('set id by constructor', () => {
     const id = 34;
     const emp = new Engineer('Gilfoyle', id);
     expect(emp.id).toBe(id);
+})
+
+test('set email by constructor', () => {
+    const email = "devilish@piedpiper.com";
+    const emp = new Engineer('Gilfoyle', 34, email);
+})
+
+test('set github username by constructor', () => {
+    const github = "bertram-gilfoyle";
+    const emp = new Engineer('Gilfoyle', 34, "devilish@piedpiper.com", github);
 })
