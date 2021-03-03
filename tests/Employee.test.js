@@ -26,3 +26,12 @@ test('set email by constructor', () => {
     const email = "asian.persuasion@piedpiper.com";
     const emp = new Employee('Jian-Yang', 12, email);
 })
+
+test('test employee methods', () => {
+    const emp = new Employee('Jian-Yang', 12, "asian.persuasion@piedpiper.com", "Employee");
+    expect(emp.getName()).toBe("Jian-Yang");
+    //Do for each method
+    expect(emp.getId()).toBe(12);
+    expect(emp.getEmail()).toBe("asian.persuasion@piedpiper.com");
+    expect(emp.getRole()).toBe("Employee");
+})

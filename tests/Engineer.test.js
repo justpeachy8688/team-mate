@@ -1,3 +1,4 @@
+const { expect } = require("@jest/globals");
 const Engineer = require("../lib/Engineer");
 
 test('initiate Engineer', () => {
@@ -24,5 +25,15 @@ test('set email by constructor', () => {
 
 test('set github username by constructor', () => {
     const github = "bertram-gilfoyle";
-    const emp = new Engineer('Gilfoyle', 34, "devilish@piedpiper.com", github);
+    const e = new Engineer('Gilfoyle', 34, "devilish@piedpiper.com", github);
+})
+
+test('test engineer methods', () => {
+    const e = new Engineer('Gilfoyle', 34, "devilish@piedpiper.com", "");
+    expect(e.getName()).toBe("Gilfoyle");
+    //Do for each method
+    expect(e.getId()).toBe(34);
+    expect(e.getEmail()).toBe("devilish@piedpiper.com");
+    expect(e.getRole()).toBe("Engineer");
+    expect(e.getGithub()).toBe("bertram-gilfoyle");
 })

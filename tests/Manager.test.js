@@ -1,3 +1,4 @@
+const { test, expect } = require("@jest/globals");
 //Include the Manager.js file
 const Manager = require("../lib/Manager");
 
@@ -24,8 +25,24 @@ test('set email by constructor', () => {
     expect(man.email).toBe(email);
 });
 
+test('set role by constructor', () => {
+    const role = "Manager";
+    const man = new Manager('Richard', 56, "bossman@piedpiper.com", role);
+    expect(man.role).toBe(role);
+});
+
 test('set office number by constructor', () => {
     const office = 250;
-    const man = new Manager('Richard', 56, "bossman@piedpiper.com", office);
+    const man = new Manager('Richard', 56, "bossman@piedpiper.com", "Manager", office);
     expect(man.office).toBe(office);
+});
+
+test('test manager methods', () => {
+    const man = new Manager('Richard', 56, "bossman@piedpiper.com", "Manager", "Manager's Office");
+    expect(man.getName()).toBe("Richard");
+    //Do for each method
+    expect(man.getId()).toBe(56);
+    expect(man.getEmail()).toBe("bossman@piedpiper.com");
+    expect(man.getRole()).toBe("Manager");
+    expect(man.getOffice()).toBe("Manager's Office")
 });
