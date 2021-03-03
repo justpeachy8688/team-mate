@@ -89,7 +89,8 @@ function addMoreEmployees() {
                     name: 'office',
                     message: 'What is the managers office number?'
                 }
-            ]).then((man_answer) => {
+            ]).then(({ office }) => {
+                console.log("About to add new Manager", name, employeeId, email, office, role)
                 let employee = new Manager(name, employeeId, email, role, office)
                 employeeArray.push(employee);
             })
@@ -110,7 +111,7 @@ function addMoreEmployees() {
         //     }
         //     return true;
         // })
-        addMoreEmployees();
+        // addMoreEmployees();
     })
 
 }
