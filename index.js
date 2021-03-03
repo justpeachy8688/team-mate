@@ -60,11 +60,13 @@ function addMoreEmployees() {
                     name: 'github',
                     message: "What is the Engineer's github username?"
                 }
-            ]).then((eng_answer) => {
+            ]).then(({ github }) => {
+                console.log("About to create engineer", name, employeeId, email, github, role)
                 let employee = new Engineer(name, employeeId, email, github, role)
                 employeeArray.push(employee);
             });
         }
+
         if (role[0] === "Intern") {
 
             inquirer.prompt([
@@ -73,8 +75,9 @@ function addMoreEmployees() {
                     name: 'school',
                     message: 'What school does your intern attend?'
                 }
-            ]).then((int_answer) => {
-                let employee = new Intern(name, employeeId, email, role, school)
+            ]).then(({ school }) => {
+                console.log("About to create Intern", name, employeeId, email, school, role)
+                let employee = new Intern(name, employeeId, email, school, role)
                 employeeArray.push(employee);
             });
         }
@@ -91,23 +94,23 @@ function addMoreEmployees() {
                 employeeArray.push(employee);
             })
         }
-        inquirer.prompt([
-            {
-                type: 'checkbox',
-                name: 'add',
-                message: 'Would you like to add more Employees?',
-                choices: ['Yes',
-                    'No']
-            }
-        ]).then((response) => {
-            if (response.add === "Yes") {
-                addMoreEmployees()
-            }
-            if (response.add === "No") {
-            }
-            return true;
-        })
-        // addMoreEmployees();
+        // inquirer.prompt([
+        //     {
+        //         type: 'checkbox',
+        //         name: 'add',
+        //         message: 'Would you like to add more Employees?',
+        //         choices: ['Yes',
+        //             'No']
+        //     }
+        // ]).then((response) => {
+        //     if (response.add === "Yes") {
+        //         addMoreEmployees()
+        //     }
+        //     if (response.add === "No") {
+        //     }
+        //     return true;
+        // })
+        addMoreEmployees();
     })
 
 }
