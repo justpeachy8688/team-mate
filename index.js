@@ -47,23 +47,77 @@ const questions = () =>
 
 const employeeArray = [];
 
-questions().then(({ name, employeeId, email, role }) => {
-    console.log(name, employeeId, email)
-    let roleInfo = "";
-    if (role[0] === "Engineer") {
-        let employee = new Engineer(name, employeeId, email, role)
-        employeeArray.push(employee);
-    }
-    if (role[0] === "Intern") {
-        let employee = new Intern(name, employeeId, email, role)
-        employeeArray.push(employee);
-    }
-    if (role[0] === "Manager") {
-        let employee = new Manager(name, employeeId, email, role)
-        employeeArray.push(employee);
-    }
-    //return employee array 
-})
+
+function addMoreEmployees() {
+    questions().then(({ name, employeeId, email, role }) => {
+        console.log(name, employeeId, email, role)
+        let roleInfo = "";
+        if (role[0] === "Engineer") {
+
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'github',
+                    message: "What is the Engineer's github username?"
+                }
+            ]).then((eng_answer) => {
+                let employee = new Engineer(name, employeeId, email, github, role)
+                employeeArray.push(employee);
+            });
+        }
+        if (role[0] === "Intern") {
+
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'school',
+                    message: 'What school does your intern attend?'
+                }
+            ]).then((int_answer) => {
+                let employee = new Intern(name, employeeId, email, role, school)
+                employeeArray.push(employee);
+            });
+        }
+        if (role[0] === "Manager") {
+
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'office',
+                    message: 'What is the managers office number?'
+                }
+            ]).then((man_answer) => {
+                let employee = new Manager(name, employeeId, email, role, office)
+                employeeArray.push(employee);
+            })
+        }
+        inquirer.prompt([
+            {
+                type: 'checkbox',
+                name: 'add',
+                message: 'Would you like to add more Employees?',
+                choices: ['Yes',
+                    'No']
+            }
+        ]).then((response) => {
+            if (response.add === "Yes") {
+                addMoreEmployees()
+            }
+            if (response.add === "No") {
+            }
+            return true;
+        })
+        // addMoreEmployees();
+    })
+
+}
+
+/**
+ * ENTRY POINT
+ */
+
+addMoreEmployees();
+
 //.then
 //card for each employee
 
