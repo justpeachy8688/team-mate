@@ -112,11 +112,15 @@ function addMoreEmployees() {
             }
 
         })
-        addMoreEmployees();
     })
 
 }
 
+const getInternCard = function (employeeArray) {
+    //return ``
+}
+
+console.log(getInternCard(employeeArray));
 /**
  * ENTRY POINT
  */
