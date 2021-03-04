@@ -24,7 +24,7 @@ const questions = () =>
             message: "What is the team member's name?",
         },
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'role',
             message: "Select team member's role",
             choices: [
@@ -95,23 +95,24 @@ function addMoreEmployees() {
                 employeeArray.push(employee);
             })
         }
-        // inquirer.prompt([
-        //     {
-        //         type: 'checkbox',
-        //         name: 'add',
-        //         message: 'Would you like to add more Employees?',
-        //         choices: ['Yes',
-        //             'No']
-        //     }
-        // ]).then((response) => {
-        //     if (response.add === "Yes") {
-        //         addMoreEmployees()
-        //     }
-        //     if (response.add === "No") {
-        //     }
-        //     return true;
-        // })
-        // addMoreEmployees();
+        inquirer.prompt([
+            {
+                type: 'list',
+                name: 'add',
+                message: 'Would you like to add more Employees?',
+                choices: ['Yes',
+                    'No']
+            }
+        ]).then((response) => {
+            if (response.add === "Yes") {
+                addMoreEmployees()
+            }
+            if (response.add === "No") {
+                return true;
+            }
+
+        })
+        addMoreEmployees();
     })
 
 }
