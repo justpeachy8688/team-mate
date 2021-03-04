@@ -61,7 +61,7 @@ function addMoreEmployees() {
                     message: "What is the Engineer's github username?"
                 }
             ]).then(({ github }) => {
-                console.log("About to create engineer", name, employeeId, email, github, role)
+                console.log("About to create Engineer:ß", name, employeeId, email, github, role)
                 let employee = new Engineer(name, employeeId, email, github, role)
                 employeeArray.push(employee);
             });
@@ -76,7 +76,7 @@ function addMoreEmployees() {
                     message: 'What school does your intern attend?'
                 }
             ]).then(({ school }) => {
-                console.log("About to create Intern", name, employeeId, email, school, role)
+                console.log("About to create Intern:", name, employeeId, email, school, role)
                 let employee = new Intern(name, employeeId, email, school, role)
                 employeeArray.push(employee);
             });
@@ -90,7 +90,7 @@ function addMoreEmployees() {
                     message: 'What is the managers office number?'
                 }
             ]).then(({ office }) => {
-                console.log("About to add new Manager", name, employeeId, email, office, role)
+                console.log("About to add new Manager:", name, employeeId, email, office, role)
                 let employee = new Manager(name, employeeId, email, role, office)
                 employeeArray.push(employee);
             })
