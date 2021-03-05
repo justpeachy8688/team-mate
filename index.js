@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+// const renderHTML = require('./lib/')
 
 //TO-DO
 // 1. Write our classes to construct new objects with this data
@@ -52,7 +53,8 @@ function addMoreEmployees() {
     questions().then(({ name, employeeId, email, role }) => {
         console.log(name, employeeId, email, role)
         let roleInfo = "";
-        if (role[0] === "Engineer") {
+        console.log(role[0]);
+        if (role[0] == "E") {
 
             inquirer.prompt([
                 {
@@ -61,13 +63,14 @@ function addMoreEmployees() {
                     message: "What is the Engineer's github username?"
                 }
             ]).then(({ github }) => {
-                console.log("About to create Engineer:ß", name, employeeId, email, github, role)
+                console.log("About to create Engineer:", name, employeeId, email, github, role)
                 let employee = new Engineer(name, employeeId, email, github, role)
                 employeeArray.push(employee);
+                askForMore();
             });
         }
 
-        if (role[0] === "Intern") {
+        if (role[0] == "I") {
 
             inquirer.prompt([
                 {
@@ -79,9 +82,10 @@ function addMoreEmployees() {
                 console.log("About to create Intern:", name, employeeId, email, school, role)
                 let employee = new Intern(name, employeeId, email, school, role)
                 employeeArray.push(employee);
+                askForMore();
             });
         }
-        if (role[0] === "Manager") {
+        if (role[0] == "M") {
 
             inquirer.prompt([
                 {
@@ -93,34 +97,41 @@ function addMoreEmployees() {
                 console.log("About to add new Manager:", name, employeeId, email, office, role)
                 let employee = new Manager(name, employeeId, email, role, office)
                 employeeArray.push(employee);
+                askForMore();
             })
         }
-        inquirer.prompt([
-            {
-                type: 'list',
-                name: 'add',
-                message: 'Would you like to add more Employees?',
-                choices: ['Yes',
-                    'No']
-            }
-        ]).then((response) => {
-            if (response.add === "Yes") {
-                addMoreEmployees()
-            }
-            if (response.add === "No") {
-                return true;
-            }
-
-        })
     })
 
 }
 
-const getInternCard = function (employeeArray) {
-    //return ``
+function askForMore() {
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'add',
+            message: 'Would you like to add more Employees?',
+            choices: ['Yes',
+                'No']
+        }
+    ]).then((response) => {
+        if (response.add === "Yes") {
+            addMoreEmployees()
+        }
+        if (response.add === "No") {
+            console.log(employeeArray)
+            //generate HTML function goes here because when they say no were done so its time to make files.
+            return true;
+        }
+
+    })
 }
 
-console.log(getInternCard(employeeArray));
+
+// const getInternCard = function (employeeArray) {
+//     //return ``
+// }
+
+// console.log(getInternCard(employeeArray));
 /**
  * ENTRY POINT
  */
