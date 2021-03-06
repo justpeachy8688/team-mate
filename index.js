@@ -3,7 +3,8 @@ const inquirer = require('inquirer');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
-// const renderHTML = require('./lib/')
+const renderHTML = require('./dist/renderHTML')
+const fs = require('fs');
 
 //TO-DO
 // 1. Write our classes to construct new objects with this data
@@ -118,63 +119,24 @@ function askForMore() {
             addMoreEmployees()
         }
         if (response.add === "No") {
-            console.log(employeeArray)
-            //generate HTML function goes here because when they say no were done so its time to make files.
+            //console.log(employeeArray)
+            const html = renderHTML(employeeArray);
+            console.log(html)
+            saveHTML(html);
             return true;
+            //
         }
 
     })
 }
 
+function saveHTML(html) {
+    fs.writeFileSync('generate.html', html, err => {
+        if (err) throw err
+    })
+}
 
-// const getInternCard = function (employeeArray) {
-//     //return ``
-// }
-
-// console.log(getInternCard(employeeArray));
-/**
- * ENTRY POINT
- */
+/* ENTRY POINT
+*/
 
 addMoreEmployees();
-
-//.then
-//card for each employee
-
-//NOTES: Need to figure out how to get employee out of the .then OR run all other processes within the .then code block OR chain .then's. LOOK UP promise.all() as a potential solution for getting back multiple promises
-
-
-// console.log(employeeArray);
-//new Employee(name, employeeId, email, office) {
-
-//}
-
-// const manager = new manager(name, employeeId, email, office)
-
-
-// const manager = {
-//     name: '__',
-//     id: '__',
-//     email: '__',
-//     office: '__'
-// };
-
-
-// class Manager
-// class Engineer 
-// class Intern
-
-// new Manager(inquirer, answers) {
-
-// };
-
-
-
-
-// function questionsTwo = () => {
-
-// };
-
-// const generateHTML = (answers) => {
-
-// };
