@@ -36,6 +36,8 @@
 
 This is a Node.js command-line application that takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. It also contains a unit test for every part of the code to ensure that it passes each test.
 
+![Mock Up](assets/MOCKUP.png)
+
 ## Getting Started
 
 To get a local copy up and running follow these simple steps. You can also download the source files provided. You will need a text editor such as Visual Studio Code.
@@ -45,6 +47,9 @@ To get a local copy up and running follow these simple steps. You can also downl
 If you would like to test this project, run npm test.
 
 ## Usage
+![GIF Example](assets/GIF.png)
+
+🎥 The full movie file showing functionality of the application can be found [here](https://drive.google.com/file/d/1MGzg6JSQKNIcOWNTXAhQtupZlzFO1w5x/view?usp=sharing)
 
 In your terminal run the app with the command node index.js. Enter your employee details when prompted. Add additional members and select their role. After all members have been added, your HTML will be generated in the dist/ folder.
 

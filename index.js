@@ -52,9 +52,9 @@ const employeeArray = [];
 
 function addMoreEmployees() {
     questions().then(({ name, employeeId, email, role }) => {
-        console.log(name, employeeId, email, role)
+        // console.log(name, employeeId, email, role)
         let roleInfo = "";
-        console.log(role[0]);
+        // console.log(role[0]);
         if (role[0] == "E") {
 
             inquirer.prompt([
