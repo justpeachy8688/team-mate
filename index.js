@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
-const renderHTML = require('./dist/renderHTML')
+const renderHTML = require('./renderHTML')
 const fs = require('fs');
 
 //TO-DO
@@ -131,7 +131,7 @@ function askForMore() {
 }
 
 function saveHTML(html) {
-    fs.writeFileSync('generate.html', html, err => {
+    fs.writeFileSync('dist/generate.html', html, err => {
         if (err) throw err
     })
 }
