@@ -5,7 +5,7 @@ const renderHTML = (employeeArray) => {
     employeeArray.forEach(object => {
         let currentCard =
             `
-        <div class="card employeeCard">
+        <div class="card cardMargin employeeCard">
             <div class="card-header">
                 <h5 class="staff">${object.name}</h5>
                 <h6 class="staff mb-2">${object.role}</h6>
